@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "JwT9RYUDZhVrxIzTmi2ri8Vja16SM4qSePmE/UDyJJk=",
+  "Source": "AirOpsApi",
+  "BasePath": "_content/AirOpsApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

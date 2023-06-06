@@ -1,0 +1,12 @@
+C:\Repositories\AirOpsApp\AirOpsLibrary\bin\Debug\net6.0\AirOpsLibrary.deps.json
+C:\Repositories\AirOpsApp\AirOpsLibrary\bin\Debug\net6.0\AirOpsLibrary.dll
+C:\Repositories\AirOpsApp\AirOpsLibrary\bin\Debug\net6.0\AirOpsLibrary.pdb
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\AirOpsLibrary.csproj.AssemblyReference.cache
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\AirOpsLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\AirOpsLibrary.AssemblyInfoInputs.cache
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\AirOpsLibrary.AssemblyInfo.cs
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\AirOpsLibrary.csproj.CoreCompileInputs.cache
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\AirOpsLibrary.dll
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\refint\AirOpsLibrary.dll
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\AirOpsLibrary.pdb
+C:\Repositories\AirOpsApp\AirOpsLibrary\obj\Debug\net6.0\ref\AirOpsLibrary.dll
