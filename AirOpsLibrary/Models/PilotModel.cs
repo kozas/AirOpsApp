@@ -11,6 +11,4 @@ public class PilotModel
     public int SortieCount { get; set; }
     public int Competency { get; set; }
     public DateTime LastSortie { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime UpdatedDate { get; set; }
 }

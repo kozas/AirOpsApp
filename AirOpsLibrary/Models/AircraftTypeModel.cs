@@ -10,6 +10,4 @@ public class AircraftTypeModel
     public string Nickname { get; set; }
     public AircraftRole Role { get; set; }
     public int Weight { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime UpdatedDate { get; set; }
 }

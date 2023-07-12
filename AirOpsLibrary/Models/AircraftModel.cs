@@ -4,7 +4,7 @@ namespace AirOpsLibrary.Models;
 
 public class AircraftModel
 {
-    public int Serial { get; set; }
+    public int Id { get; set; }
     public int Modex { get; set; }
     public int AircraftTypeId { get; set; }
     public int SquadronId { get; set; }
@@ -18,6 +18,4 @@ public class AircraftModel
     public AircraftStatus Status { get; set; }
     public DateTime LastSortie { get; set; }
     public DateTime LastService { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime UpdatedDate { get; set; }
 }

@@ -12,6 +12,4 @@ public class SquadronModel
     public string RadioCallSign { get; set; }
     public string? Motto { get; set; }
     public AircraftRole Role { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public DateTime UpdatedDate { get; set; }
 }
