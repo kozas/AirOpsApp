@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+AirOpsApi/bin/Debug/net6.0/
+
+AirOpsApi/obj/Debug/net6.0/
+
+AirOpsLibrary/bin/Debug/net6.0/
+
+AirOpsLibrary/obj/Debug/net6.0/

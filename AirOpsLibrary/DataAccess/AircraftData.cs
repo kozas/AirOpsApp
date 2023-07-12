@@ -14,7 +14,7 @@ public class AircraftData : IAircraftData
     public Task<List<AircraftModel>> GetAll()
     {
         return sql.LoadData<AircraftModel, dynamic>("dbo.spAircraft_GetAll",
-            "",
+            new { },
             "Default");
     }
 

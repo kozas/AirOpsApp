@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AirOpsLibrary.Models;
 using AirOpsLibrary.Enums;
+using AirOpsLibrary.DataAccess;
+using System.Security.Claims;
 
 namespace AirOpsApi.Controllers
 {
@@ -8,33 +10,46 @@ namespace AirOpsApi.Controllers
     [ApiController]
     public class AircraftController : ControllerBase
     {
+        private readonly IAircraftData data;
+
+        public AircraftController(IAircraftData data)
+        {
+            this.data = data;
+        }
+
+        // Not currently used
+        private int GetUserId()
+        {
+            var userIdText = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            return int.Parse(userIdText);
+        }
+
         // GET: api/Aircraft
         [HttpGet]
-        public ActionResult<IEnumerable<AircraftModel>> Get()
+        public async Task<ActionResult<List<AircraftModel>>> Get()
         {
-            throw new NotImplementedException();
+            var output = await data.GetAll();
+
+            return Ok(output);
         }
 
         // GET api/Aircraft/5
         [HttpGet("{id}")]
-        public ActionResult<AircraftModel> Get(int id)
+        public async Task<ActionResult<AircraftModel>> Get(int aircraftId)
         {
-            throw new NotImplementedException();
+            var output = await data.GetById(aircraftId);
+
+            return Ok(output);
         }
 
         // POST api/Aircraft
         [HttpPost]
-        public IActionResult Post([FromBody] AircraftModel aircraft)
+        public async Task<ActionResult<AircraftModel>> Post([FromBody] AircraftModel aircraft)
         {
-            throw new NotImplementedException();
-        }
+            var output = await data.Create(aircraft.Modex, aircraft.AircraftTypeId, aircraft.SquadronId);
 
-        //// PUT api/Aircraft/5
-        //[HttpPut("{id}")]
-        //public IActionResult Put(int id, [FromBody] string value)
-        //{
-        //    throw new NotImplementedException();
-        //}
+            return Ok(output);
+        }
 
         // PUT api/Aircraft/5/loadout
         [HttpPut("{id}/loadout")]
