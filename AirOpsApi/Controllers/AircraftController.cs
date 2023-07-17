@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AirOpsLibrary.Models;
 using AirOpsLibrary.Enums;
-using AirOpsLibrary.DataAccess;
 using System.Security.Claims;
+using AirOpsLibrary.DataAccess.Interfaces;
 
 namespace AirOpsApi.Controllers
 {
@@ -53,44 +53,56 @@ namespace AirOpsApi.Controllers
 
         // PUT api/Aircraft/5/loadout
         [HttpPut("{id}/loadout")]
-        public IActionResult Put(int id, [FromBody] LoadoutModel loadout)
+        public async Task<IActionResult> Put(int id, [FromBody] LoadoutModel loadout)
         {
-            throw new NotImplementedException();
+            await data.UpdateLoadout(id, loadout.Id);
+
+            return Ok();
         }
 
         // PUT api/Aircraft/5/location
         [HttpPut("{id}/location")]
-        public IActionResult Put(int id, [FromBody] LocationModel location)
+        public async Task<IActionResult> Put(int id, [FromBody] LocationModel location)
         {
-            throw new NotImplementedException();
+            await data.UpdateLocation(id, location.Id);
+
+            return Ok();
         }
 
         // PUT api/Aircraft/5/pilot
         [HttpPut("{id}/pilot")]
-        public IActionResult Put(int id, [FromBody] PilotModel pilot)
+        public async Task<IActionResult> Put(int id, [FromBody] PilotModel pilot)
         {
-            throw new NotImplementedException();
+            await data.UpdatePilot(id, pilot.Id);
+
+            return Ok();
         }
 
         // PUT api/Aircraft/5/squadron
         [HttpPut("{id}/squadron")]
-        public IActionResult Put(int id, [FromBody] SquadronModel squadron)
+        public async Task<IActionResult> Put(int id, [FromBody] SquadronModel squadron)
         {
-            throw new NotImplementedException();
+            await data.UpdateSquadron(id, squadron.Id);
+
+            return Ok();
         }
 
         // PUT api/Aircraft/5/status
         [HttpPut("{id}/status")]
-        public IActionResult Put(int id, [FromBody] AircraftStatus status)
+        public async Task<IActionResult> Put(int id, [FromBody] AircraftStatus status)
         {
-            throw new NotImplementedException();
+            await data.UpdateStatus(id, (int) status);
+
+            return Ok();
         }
 
         // DELETE api/Aircraft/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            throw new NotImplementedException();
+            await data.Delete(id);
+
+            return Ok();
         }
     }
 }

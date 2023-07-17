@@ -7,7 +7,6 @@ public class PilotModel
     public string LastName { get; set; }
     public string CallSign { get; set; }
     public int SquadronId { get; set; }
-    public int AircraftSerial { get; set; }
     public int SortieCount { get; set; }
     public int Competency { get; set; }
     public DateTime LastSortie { get; set; }

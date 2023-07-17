@@ -1,4 +1,5 @@
 ﻿using AirOpsLibrary.DataAccess;
+using AirOpsLibrary.DataAccess.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -14,6 +15,8 @@ public static class DependencyInjectionExtensions
         builder.Services.AddSwaggerGen();
         builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
         builder.Services.AddSingleton<IAircraftData, AircraftData>();
+        builder.Services.AddSingleton<ISquadronData, SquadronData>();
+        builder.Services.AddSingleton<IPilotData, PilotData>();
         builder.Services.AddAuthorization(opts =>
         {
             opts.FallbackPolicy = new AuthorizationPolicyBuilder()

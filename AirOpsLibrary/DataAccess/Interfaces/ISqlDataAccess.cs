@@ -1,4 +1,4 @@
-﻿namespace AirOpsLibrary.DataAccess
+﻿namespace AirOpsLibrary.DataAccess.Interfaces
 {
     public interface ISqlDataAccess
     {

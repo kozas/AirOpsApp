@@ -2,6 +2,7 @@
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
+using AirOpsLibrary.DataAccess.Interfaces;
 
 namespace AirOpsLibrary.DataAccess;
 

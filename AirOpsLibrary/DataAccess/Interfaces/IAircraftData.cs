@@ -1,6 +1,6 @@
 ﻿using AirOpsLibrary.Models;
 
-namespace AirOpsLibrary.DataAccess
+namespace AirOpsLibrary.DataAccess.Interfaces
 {
     public interface IAircraftData
     {

@@ -1,4 +1,5 @@
-﻿using AirOpsLibrary.Models;
+﻿using AirOpsLibrary.DataAccess.Interfaces;
+using AirOpsLibrary.Models;
 
 namespace AirOpsLibrary.DataAccess;
 
@@ -77,6 +78,5 @@ public class AircraftData : IAircraftData
             new { id = aircraftId },
             "Default");
     }
-
 }
 

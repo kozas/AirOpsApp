@@ -2,7 +2,7 @@
 
 namespace AirOpsLibrary.Models;
 
-public class Armament
+public class ArmamentModel
 {
     public int Id { get; set; }
     public string? Designation { get; set; }
