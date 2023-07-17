@@ -34,7 +34,7 @@ namespace AirOpsApi.Controllers
         }
 
         // GET api/Aircraft/5
-        [HttpGet("{id}")]
+        [HttpGet("{aircraftId}")]
         public async Task<ActionResult<AircraftModel>> Get(int aircraftId)
         {
             var output = await data.GetById(aircraftId);
@@ -51,45 +51,45 @@ namespace AirOpsApi.Controllers
             return Ok(output);
         }
 
-        // PUT api/Aircraft/5/loadout
-        [HttpPut("{id}/loadout")]
-        public async Task<IActionResult> Put(int id, [FromBody] LoadoutModel loadout)
+        // PATCH api/Aircraft/5/Loadout
+        [HttpPatch("{aircraftId}/Loadout")]
+        public async Task<IActionResult> Patch(int aircraftId, [FromBody] LoadoutModel loadout)
         {
-            await data.UpdateLoadout(id, loadout.Id);
+            await data.UpdateLoadout(aircraftId, loadout.Id);
 
             return Ok();
         }
 
-        // PUT api/Aircraft/5/location
-        [HttpPut("{id}/location")]
-        public async Task<IActionResult> Put(int id, [FromBody] LocationModel location)
+        // PATCH api/Aircraft/5/Location
+        [HttpPatch("{id}/Location")]
+        public async Task<IActionResult> Patch(int id, [FromBody] LocationModel location)
         {
             await data.UpdateLocation(id, location.Id);
 
             return Ok();
         }
 
-        // PUT api/Aircraft/5/pilot
-        [HttpPut("{id}/pilot")]
-        public async Task<IActionResult> Put(int id, [FromBody] PilotModel pilot)
+        // PATCH api/Aircraft/5/Pilot
+        [HttpPatch("{id}/Pilot")]
+        public async Task<IActionResult> Patch(int id, [FromBody] PilotModel pilot)
         {
             await data.UpdatePilot(id, pilot.Id);
 
             return Ok();
         }
 
-        // PUT api/Aircraft/5/squadron
-        [HttpPut("{id}/squadron")]
-        public async Task<IActionResult> Put(int id, [FromBody] SquadronModel squadron)
+        // PATCH api/Aircraft/5/Squadron
+        [HttpPatch("{aircraftId}/Squadron")]
+        public async Task<ActionResult> Patch(int aircraftId, [FromBody] SquadronModel squadron)
         {
-            await data.UpdateSquadron(id, squadron.Id);
+            await data.UpdateSquadron(aircraftId, squadron.Id);
 
             return Ok();
         }
 
-        // PUT api/Aircraft/5/status
-        [HttpPut("{id}/status")]
-        public async Task<IActionResult> Put(int id, [FromBody] AircraftStatus status)
+        // PATCH api/Aircraft/5/Status
+        [HttpPatch("{id}/Status")]
+        public async Task<IActionResult> Patch(int id, [FromBody] AircraftStatus status)
         {
             await data.UpdateStatus(id, (int) status);
 

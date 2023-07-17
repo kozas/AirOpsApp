@@ -22,7 +22,7 @@ public class PilotData : IPilotData
     public async Task<PilotModel?> GetById(int pilotId)
     {
         var result = await sql.LoadData<PilotModel, dynamic>("dbo.spPilots_Lookup",
-            new { id = pilotId },
+            new { PilotId = pilotId },
             "Default");
 
         return result.FirstOrDefault();
@@ -40,28 +40,28 @@ public class PilotData : IPilotData
     public Task UpdateInformation(int pilotId, string firstName, string lastName, string callSign)
     {
         return sql.SaveData<dynamic>("dbo.spPilots_Update",
-            new { id = pilotId, FirstName = firstName, LastName = lastName, CallSign = callSign },
+            new { PilotId = pilotId, FirstName = firstName, LastName = lastName, CallSign = callSign },
             "Default");
     }
 
     public Task UpdateCompetency(int pilotId, int competency)
     {
         return sql.SaveData<dynamic>("dbo.spPilots_UpdateCompetency",
-            new { id = pilotId, Competency = competency },
+            new { PilotId = pilotId, Competency = competency },
             "Default");
     }
 
     public Task UpdateSorties(int pilotId, int sortieCount, DateTime lastSortie)
     {
         return sql.SaveData<dynamic>("dbo.spAircraft_UpdatePilot",
-            new { id = pilotId, SortieCount = sortieCount, LastSortie = lastSortie },
+            new { PilotId = pilotId, SortieCount = sortieCount, LastSortie = lastSortie },
             "Default");
     }
 
     public Task Delete(int pilotId)
     {
         return sql.SaveData<dynamic>("dbo.spPilots_Delete",
-            new { id = pilotId },
+            new { PilotId = pilotId },
             "Default");
     }
 }

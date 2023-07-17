@@ -25,7 +25,7 @@ namespace AirOpsApi.Controllers
         }
 
         // GET api/Squadrons/5
-        [HttpGet("{id}")]
+        [HttpGet("{squadronId}")]
         public async Task<ActionResult<SquadronModel>> Get(int squadronId)
         {
             var output = await data.GetById(squadronId);
@@ -43,11 +43,11 @@ namespace AirOpsApi.Controllers
         }
 
         // PUT api/Squadrons/5/
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] SquadronModel squadron)
+        [HttpPut("{squadronId}")]
+        public async Task<IActionResult> Put(int squadronId, [FromBody] SquadronModel squadron)
         {
             await data.Update(
-                squadron.Id, 
+                squadronId, 
                 squadron.CommandingOfficerId, 
                 squadron.ExecutiveOfficerId, 
                 squadron.Designation,
@@ -60,10 +60,10 @@ namespace AirOpsApi.Controllers
         }
 
         // PUT api/Squadrons/5/
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{squadronId}")]
+        public async Task<IActionResult> Delete(int squadronId)
         {
-            await data.Delete(id);
+            await data.Delete(squadronId);
 
             return Ok();
         }

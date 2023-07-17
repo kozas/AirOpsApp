@@ -22,7 +22,7 @@ public class SquadronData : ISquadronData
     public async Task<SquadronModel?> GetById(int squadronId)
     {
         var result = await sql.LoadData<SquadronModel, dynamic>("dbo.spSquadrons_Lookup",
-            new { id = squadronId },
+            new { SquadronId = squadronId },
             "Default");
 
         return result.FirstOrDefault();
@@ -52,7 +52,7 @@ public class SquadronData : ISquadronData
     {
         return sql.SaveData<dynamic>("dbo.spSquadrons_Update", new
         {
-            id = squadronId,
+            SquadronId = squadronId,
             CommandingOfficerId = commandingOfficerId,
             ExecutiveOfficerId = executiveOfficerId,
             Designation = designation,
@@ -67,7 +67,7 @@ public class SquadronData : ISquadronData
     public Task Delete(int squadronId)
     {
         return sql.SaveData<dynamic>("dbo.spSquadrons_Delete",
-            new { id = squadronId },
+            new { SquadronId = squadronId },
             "Default");
     }
 }

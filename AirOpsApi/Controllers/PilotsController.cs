@@ -34,7 +34,7 @@ namespace AirOpsApi.Controllers
         }
 
         // GET api/Pilots/5
-        [HttpGet("{id}")]
+        [HttpGet("{pilotId}")]
         public async Task<ActionResult<PilotModel>> Get(int pilotId)
         {
             var output = await data.GetById(pilotId);
@@ -52,16 +52,16 @@ namespace AirOpsApi.Controllers
         }
 
         // PUT api/Pilots/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] PilotModel pilot)
+        [HttpPut("{pilotId}")]
+        public async Task<IActionResult> Put(int pilotId, [FromBody] PilotModel pilot)
         {
-            await data.UpdateInformation(pilot.Id, pilot.FirstName, pilot.LastName, pilot.CallSign);
+            await data.UpdateInformation(pilotId, pilot.FirstName, pilot.LastName, pilot.CallSign);
 
             return Ok();
         }
 
         // PUT api/Pilots/5/Competency
-        [HttpPut("{id}/Competency")]
+        [HttpPut("{pilotId}/Competency")]
         public async Task<IActionResult> Put(int pilotId, int competency)
         {
             await data.UpdateCompetency(pilotId, competency);
@@ -69,20 +69,20 @@ namespace AirOpsApi.Controllers
             return Ok();
         }
 
-        // PUT api/Pilots/5/Competency
-        [HttpPut("{id}/Sorties")]
-        public async Task<IActionResult> Put(int id, int sortieCount, DateTime lastSortie )
+        // PUT api/Pilots/5/Sorties
+        [HttpPut("{pilotId}/Sorties")]
+        public async Task<IActionResult> Put(int pilotId, int sortieCount, DateTime lastSortie )
         {
-            await data.UpdateSorties(id, sortieCount, lastSortie);
+            await data.UpdateSorties(pilotId, sortieCount, lastSortie);
 
             return Ok();
         }
 
         // DELETE api/Pilots/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{pilotId}")]
+        public async Task<IActionResult> Delete(int pilotId)
         {
-            await data.Delete(id);
+            await data.Delete(pilotId);
 
             return Ok();
         }
