@@ -11,10 +11,12 @@ namespace AirOpsApi.Controllers
     public class AircraftController : ControllerBase
     {
         private readonly IAircraftData data;
+        private readonly ILogger<AircraftController> logger;
 
-        public AircraftController(IAircraftData data)
+        public AircraftController(IAircraftData data, ILogger<AircraftController> logger)
         {
             this.data = data;
+            this.logger = logger;
         }
 
         // Not currently used
@@ -28,81 +30,180 @@ namespace AirOpsApi.Controllers
         [HttpGet]
         public async Task<ActionResult<List<AircraftModel>>> Get()
         {
-            var output = await data.GetAll();
+            logger.LogInformation("GET: {apiPath}", $"api/Aircraft");
 
-            return Ok(output);
+            try
+            {
+                var output = await data.GetAll();
+
+                return Ok(output);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - GET: {apiPath}", $"api/Aircraft");
+
+                return BadRequest();
+            }
         }
 
         // GET api/Aircraft/5
         [HttpGet("{aircraftId}")]
         public async Task<ActionResult<AircraftModel>> Get(int aircraftId)
         {
-            var output = await data.GetById(aircraftId);
+            logger.LogInformation("GET: {apiPath}/{aircraftId}", $"api/Aircraft", aircraftId);
 
-            return Ok(output);
+            try
+            {
+                var output = await data.GetById(aircraftId);
+
+                return Ok(output);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - GET: {apiPath}/{aircraftId}", $"api/Aircraft", aircraftId);
+
+                return BadRequest();
+            }
         }
 
         // POST api/Aircraft
         [HttpPost]
         public async Task<ActionResult<AircraftModel>> Post([FromBody] AircraftModel aircraft)
         {
-            var output = await data.Create(aircraft.Modex, aircraft.AircraftTypeId, aircraft.SquadronId);
+            logger.LogInformation("POST: {apiPath}", $"api/Aircraft");
 
-            return Ok(output);
+            try
+            {
+                var output = await data.Create(aircraft.Modex, aircraft.AircraftTypeId, aircraft.SquadronId);
+
+                return Ok(output);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - POST: {apiPath}", $"api/Aircraft");
+
+                return BadRequest();
+            }
         }
 
         // PATCH api/Aircraft/5/Loadout
         [HttpPatch("{aircraftId}/Loadout")]
         public async Task<IActionResult> Patch(int aircraftId, [FromBody] LoadoutModel loadout)
         {
-            await data.UpdateLoadout(aircraftId, loadout.Id);
+            logger.LogInformation("PATCH: {apiPath}/{aircraftId}/Loadout", $"api/Aircraft", aircraftId);
 
-            return Ok();
+            try
+            {
+                await data.UpdateLoadout(aircraftId, loadout.Id);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - PATCH: {apiPath}/{aircraftId}/Loadout", $"api/Aircraft", aircraftId);
+
+                return BadRequest();
+            }
         }
 
         // PATCH api/Aircraft/5/Location
         [HttpPatch("{id}/Location")]
-        public async Task<IActionResult> Patch(int id, [FromBody] LocationModel location)
+        public async Task<IActionResult> Patch(int aircraftId, [FromBody] LocationModel location)
         {
-            await data.UpdateLocation(id, location.Id);
+            logger.LogInformation("PATCH: {apiPath}/{aircraftId}/Location", $"api/Aircraft", aircraftId);
 
-            return Ok();
+            try
+            {
+                await data.UpdateLocation(aircraftId, location.Id);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - PATCH: {apiPath}/{aircraftId}/Location", $"api/Aircraft", aircraftId);
+
+                return BadRequest();
+            }
         }
 
         // PATCH api/Aircraft/5/Pilot
         [HttpPatch("{id}/Pilot")]
-        public async Task<IActionResult> Patch(int id, [FromBody] PilotModel pilot)
+        public async Task<IActionResult> Patch(int aircraftId, [FromBody] PilotModel pilot)
         {
-            await data.UpdatePilot(id, pilot.Id);
+            logger.LogInformation("PATCH: {apiPath}/{aircraftId}/Pilot", $"api/Aircraft", aircraftId);
 
-            return Ok();
+            try
+            {
+                await data.UpdatePilot(aircraftId, pilot.Id);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - PATCH: {apiPath}/{aircraftId}/Pilot", $"api/Aircraft", aircraftId);
+
+                return BadRequest();
+            }
         }
 
         // PATCH api/Aircraft/5/Squadron
         [HttpPatch("{aircraftId}/Squadron")]
         public async Task<ActionResult> Patch(int aircraftId, [FromBody] SquadronModel squadron)
         {
-            await data.UpdateSquadron(aircraftId, squadron.Id);
+            logger.LogInformation("PATCH: {apiPath}/{aircraftId}/Squadron", $"api/Aircraft", aircraftId);
 
-            return Ok();
+            try
+            {
+                await data.UpdateSquadron(aircraftId, squadron.Id);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - PATCH: {apiPath}/{aircraftId}/Squadron", $"api/Aircraft", aircraftId);
+
+                return BadRequest();
+            }
         }
 
         // PATCH api/Aircraft/5/Status
         [HttpPatch("{id}/Status")]
-        public async Task<IActionResult> Patch(int id, [FromBody] AircraftStatus status)
+        public async Task<IActionResult> Patch(int aircraftId, [FromBody] AircraftStatus status)
         {
-            await data.UpdateStatus(id, (int) status);
+            logger.LogInformation("PATCH: {apiPath}/{aircraftId}/Status", $"api/Aircraft", aircraftId);
 
-            return Ok();
+            try
+            {
+                await data.UpdateStatus(aircraftId, (int)status);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - PATCH: {apiPath}/{aircraftId}/Status", $"api/Aircraft", aircraftId);
+
+                return BadRequest();
+            }
         }
 
         // DELETE api/Aircraft/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await data.Delete(id);
+            logger.LogInformation("DELETE: {apiPath}", $"api/Aircraft");
 
-            return Ok();
+            try
+            {
+                await data.Delete(id);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "FAILED - DELETE: {apiPath}", $"api/Aircraft");
+
+                return BadRequest();
+            }
         }
     }
 }
